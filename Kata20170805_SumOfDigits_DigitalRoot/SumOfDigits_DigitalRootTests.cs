@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Kata20170805_SumOfDigits_DigitalRoot
@@ -10,6 +11,12 @@ namespace Kata20170805_SumOfDigits_DigitalRoot
         public void input_1_should_return_1()
         {
             AssertDigitalRootShouldBe(1, 1);
+        }
+
+        [TestMethod]
+        public void input_11_should_return_1()
+        {
+            AssertDigitalRootShouldBe(2, 11);
         }
 
         private static void AssertDigitalRootShouldBe(int expected, int num)
@@ -24,7 +31,7 @@ namespace Kata20170805_SumOfDigits_DigitalRoot
     {
         public int DigitalRoot(long n)
         {
-            return (int) n;
+            return n.ToString().ToCharArray().Select(a => int.Parse(a.ToString())).Sum();
         }
     }
 }
